@@ -27,5 +27,6 @@
     ripgrep
     fd
     coursier
+    gum
   ];
 }
