@@ -28,5 +28,6 @@
     fd
     coursier
     gum
+    git
   ];
 }
