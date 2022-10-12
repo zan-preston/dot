@@ -29,5 +29,6 @@
     coursier
     gum
     git
+    jqp
   ];
 }
