@@ -30,5 +30,6 @@
     gum
     git
     jqp
+    scala-cli
   ];
 }
