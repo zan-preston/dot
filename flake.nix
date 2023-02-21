@@ -19,7 +19,7 @@
     let
       system = "x86_64-darwin";
       overlays = [
-        /* neovim-nightly-overlay.overlay */
+        neovim-nightly-overlay.overlay
       ];
       pkgs = nixpkgs.legacyPackages.${system};
     in {
