@@ -32,5 +32,6 @@
     jqp
     scala-cli
     gh
+    wezterm
   ];
 }
