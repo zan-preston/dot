@@ -36,5 +36,6 @@
     k9s
     kubectl
     kubelogin
+    newman
   ];
 }
