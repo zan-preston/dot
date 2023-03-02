@@ -34,5 +34,7 @@
     gh
     wezterm
     k9s
+    kubectl
+    kubelogin
   ];
 }
