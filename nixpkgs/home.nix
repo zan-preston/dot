@@ -33,5 +33,6 @@
     scala-cli
     gh
     wezterm
+    k9s
   ];
 }
