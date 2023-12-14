@@ -4,7 +4,9 @@
   inputs = {
     # Specify the source of Home Manager and Nixpkgs.
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    # nixpkgs-wez.url = "github:nixos/nixpkgs/e3652e0735fbec227f342712f180f4f21f0594f2";
+    # The last successful build of wezterm on x86_64-darwin:
+    # https://hydra.nixos.org/job/nixpkgs/trunk/wezterm.x86_64-darwin#tabs-links
+    nixpkgs-wezterm.url = "github:nixos/nixpkgs/517501bcf14ae6ec47efd6a17dda0ca8e6d866f9";
     # nixpkgs-staging.url = "github:nixos/nixpkgs/staging";
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -17,15 +19,15 @@
   };
 
   # outputs = { nixpkgs, home-manager, neovim-nightly-overlay, nixpkgs-wez, ... }:
-  outputs = { nixpkgs, home-manager, ... }:
+  outputs = inputs@{ nixpkgs, home-manager, ... }:
     let
       system = "x86_64-darwin";
-      # overlays = [
+      overlays = [
       #   neovim-nightly-overlay.overlay
-      #   (final: prev: {
-      #       wezterm = nixpkgs-wez.legacyPackages.${system}.wezterm;
-      #     })
-      # ];
+        (final: prev: {
+          wezterm = inputs.nixpkgs-wezterm.legacyPackages.${system}.wezterm;
+        })
+      ];
       pkgs = nixpkgs.legacyPackages.${system};
     in {
       # `home-manager switch --flake '.config#zan'`
@@ -34,10 +36,7 @@
         # Specify your home configuration modules here, for example,
         # the path to your home.nix.
         modules = [
-          ({config, pkgs, ... }:
-            # { nixpkgs.overlays = overlays;
-            # })
-            {})
+          { nixpkgs.overlays = overlays; }
           ./nixpkgs/home.nix
         ];
 
