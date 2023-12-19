@@ -38,5 +38,6 @@
     kubelogin
     kustomize
     newman
+    google-cloud-sdk
   ];
 }
