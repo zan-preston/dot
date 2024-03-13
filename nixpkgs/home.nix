@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ allowed-unfree-packages, config, lib, pkgs, ... }:
 
 {
   # Let Home Manager install and manage itself.
@@ -6,8 +6,8 @@
 
   # Home Manager needs a bit of information about you and the
   # paths it should manage.
-  home.username = "zan.preston";
-  home.homeDirectory = "/Users/zan.preston";
+  home.username = "APreston";
+  home.homeDirectory = "/Users/APreston";
 
   # This value determines the Home Manager release that your
   # configuration is compatible with. This helps avoid breakage
@@ -17,6 +17,9 @@
   # You can update Home Manager without changing this value. See
   # the Home Manager release notes for a list of state version
   # changes in each release.
+  nixpkgs.config = {
+    allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) allowed-unfree-packages;
+  };
   home.stateVersion = "22.05";
 
   home.packages = with pkgs; [
@@ -39,5 +42,31 @@
     kustomize
     newman
     (google-cloud-sdk.withExtraComponents [google-cloud-sdk.components.gke-gcloud-auth-plugin])
+    bitwarden-cli
+    keychain
+    gcc11
+    bat
+    gnutls
+    colordiff
+    coreutils
+    curl
+    ffmpeg
+    fzf
+    gnupg
+    glow
+    go
+    htop
+    nmap
+    pandoc
+    #mpv
+    vault
+    watch
+    youtube-dl
+    tree
+    imagemagick
+    graphicsmagick
+    gimp
+    appcleaner
+    postman
   ];
 }

@@ -5,7 +5,7 @@
     # Specify the source of Home Manager and Nixpkgs.
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     # The last successful build of wezterm on x86_64-darwin:
-    # https://hydra.nixos.org/job/nixpkgs/trunk/wezterm.x86_64-darwin#tabs-links
+    # https://hydra.nixos.org/job/nixpkgs/trenk/wezterm.x86_64-darwin#tabs-links
     nixpkgs-wezterm.url = "github:nixos/nixpkgs/517501bcf14ae6ec47efd6a17dda0ca8e6d866f9";
     # nixpkgs-staging.url = "github:nixos/nixpkgs/staging";
     home-manager = {
@@ -21,7 +21,7 @@
   # outputs = { nixpkgs, home-manager, neovim-nightly-overlay, nixpkgs-wez, ... }:
   outputs = inputs@{ nixpkgs, home-manager, ... }:
     let
-      system = "x86_64-darwin";
+      system = "aarch64-darwin";
       overlays = [
       #   neovim-nightly-overlay.overlay
         (final: prev: {
@@ -29,6 +29,12 @@
         })
       ];
       pkgs = nixpkgs.legacyPackages.${system};
+
+      allowed-unfree-packages = [
+        "postman"
+        "vault"
+        "appcleaner"
+      ];
     in {
       # `home-manager switch --flake '.config#zan'`
       homeConfigurations.zan = home-manager.lib.homeManagerConfiguration {
@@ -42,6 +48,7 @@
 
         # Optionally use extraSpecialArgs
         # to pass through arguments to home.nix
+        extraSpecialArgs = {inherit allowed-unfree-packages;};
       };
     };
 }
