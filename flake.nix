@@ -5,7 +5,7 @@
     # Specify the source of Home Manager and Nixpkgs.
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     # The last successful build of wezterm on x86_64-darwin:
-    # https://hydra.nixos.org/job/nixpkgs/trenk/wezterm.x86_64-darwin#tabs-links
+    # https://hydra.nixos.org/job/nixpkgs/trunk/wezterm.x86_64-darwin#tabs-links
     nixpkgs-wezterm.url = "github:nixos/nixpkgs/517501bcf14ae6ec47efd6a17dda0ca8e6d866f9";
     # nixpkgs-staging.url = "github:nixos/nixpkgs/staging";
     home-manager = {
