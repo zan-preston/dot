@@ -12,6 +12,10 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nix-darwin = {
+      url = "github:LnL7/nix-darwin/master";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     # neovim-nightly-overlay = {
     #   url = "github:nix-community/neovim-nightly-overlay";
     #   inputs.nixpkgs.follows = "nixpkgs";
@@ -19,9 +23,18 @@
   };
 
   # outputs = { nixpkgs, home-manager, neovim-nightly-overlay, nixpkgs-wez, ... }:
-  outputs = inputs@{ nixpkgs, home-manager, ... }:
+  outputs = inputs@{ nixpkgs, home-manager, nix-darwin, ... }:
     let
       system = "aarch64-darwin";
+
+      configuration = { pkgs, ... }: {
+        # Auto upgrade nix package and the daemon service.
+        services.nix-daemon.enable = true;
+        # nix.package = pkgs.nix;
+
+        # Necessary for using flakes on this system.
+        nix.settings.experimental-features = "nix-command flakes";
+      };
       overlays = [
       #   neovim-nightly-overlay.overlay
         (final: prev: {
@@ -36,6 +49,15 @@
         "appcleaner"
       ];
     in {
+      
+      darwinConfigurations.DQJ36L2FJ1 = nix-darwin.lib.darwinSystem {
+        system = "aarch64-darwin";
+        modules = [
+          configuration
+          {}
+        ];
+      };
+
       # `home-manager switch --flake '.config#zan'`
       homeConfigurations.zan = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
