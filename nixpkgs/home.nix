@@ -68,5 +68,8 @@
     gimp
     appcleaner
     postman
+    sketchybar
+    sketchybar-app-font
+    fm-go
   ];
 }
