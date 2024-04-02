@@ -1,5 +1,8 @@
 { allowed-unfree-packages, config, lib, pkgs, ... }:
 
+let 
+  extraNodePackages = import ./node/default.nix {};
+in
 {
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
@@ -21,6 +24,15 @@
     allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) allowed-unfree-packages;
   };
   home.stateVersion = "22.05";
+
+  # https://code-notes.jhuizy.com/add-custom-npm-to-home-manager/
+  #
+  # ```
+  # cd node
+  # nix-shell -p nodePackages.node2nix --command "node2nix -i ./node-packages.json -o node-packages.nix"
+  # ```
+  #
+
 
   home.packages = with pkgs; [
     neovim
@@ -71,5 +83,7 @@
     sketchybar
     sketchybar-app-font
     fm-go
+    nodejs_21
+    extraNodePackages.dexsearch
   ];
 }
