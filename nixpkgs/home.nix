@@ -29,7 +29,7 @@ in
   #
   # ```
   # cd node
-  # nix-shell -p nodePackages.node2nix --command "node2nix -i ./node-packages.json -o node-packages.nix"
+  # nix-shell -p nodePackages.node2nix --command "node2nix -i ./node-packages.json -o node-packages.nix --nodejs-18"
   # ```
   #
 
