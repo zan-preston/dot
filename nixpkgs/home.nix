@@ -44,6 +44,7 @@ in
     coursier
     gum
     git
+    jq
     jqp
     scala-cli
     gh
