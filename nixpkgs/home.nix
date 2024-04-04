@@ -86,5 +86,6 @@ in
     fm-go
     nodejs_21
     extraNodePackages.dexsearch
+    jira-cli-go
   ];
 }
