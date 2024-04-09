@@ -49,6 +49,7 @@ in
     scala-cli
     gh
     wezterm
+    dexsearch
     k9s
     kubectl
     kubelogin
@@ -85,7 +86,7 @@ in
     sketchybar-app-font
     fm-go
     nodejs_21
-    extraNodePackages.dexsearch
+    #extraNodePackages.dexsearch
     jira-cli-go
   ];
 }

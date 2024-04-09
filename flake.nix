@@ -37,13 +37,18 @@
 
         programs.zsh.enable = true;
       };
+
+      pkgs = nixpkgs.legacyPackages.${system};
+
+      extraNodePkgs = import ./nixpkgs/node { inherit pkgs system; };
+
       overlays = [
       #   neovim-nightly-overlay.overlay
         (final: prev: {
-          wezterm = inputs.nixpkgs-wezterm.legacyPackages.${system}.wezterm;
+          wezterm = inputs.nixpkgs-wezterm.legacyPackages.${prev.system}.wezterm;
+          dexsearch = extraNodePkgs.dexsearch;
         })
       ];
-      pkgs = nixpkgs.legacyPackages.${system};
 
       allowed-unfree-packages = [
         "postman"
@@ -74,5 +79,6 @@
         # to pass through arguments to home.nix
         extraSpecialArgs = {inherit allowed-unfree-packages;};
       };
+    packages.aarch64-darwin.dexsearch = extraNodePkgs.dexsearch;
     };
 }
