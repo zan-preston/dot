@@ -88,5 +88,6 @@ in
     nodejs_21
     #extraNodePackages.dexsearch
     jira-cli-go
+    zellij
   ];
 }
