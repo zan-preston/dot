@@ -44,6 +44,7 @@ in
     coursier
     gum
     git
+#    libgit2
     jq
     jqp
     scala-cli
@@ -90,4 +91,9 @@ in
     jira-cli-go
     zellij
   ];
+#
+#  programs.neovim = {
+#    enable = true;
+#    extraPackages = [ pkgs.libgit2 ];
+#  };
 }
