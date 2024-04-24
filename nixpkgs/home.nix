@@ -90,6 +90,8 @@ in
     #extraNodePackages.dexsearch
     jira-cli-go
     zellij
+    obsidian
+    pngpaste
   ];
 #
 #  programs.neovim = {

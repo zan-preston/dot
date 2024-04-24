@@ -54,6 +54,7 @@
         "postman"
         "vault"
         "appcleaner"
+        "obsidian"
       ];
     in {
       
