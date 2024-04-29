@@ -86,7 +86,7 @@ in
     sketchybar
     sketchybar-app-font
     fm-go
-    nodejs_21
+    #nodejs_21
     #extraNodePackages.dexsearch
     jira-cli-go
     zellij
