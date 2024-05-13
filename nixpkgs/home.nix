@@ -87,11 +87,13 @@ in
     sketchybar-app-font
     fm-go
     #nodejs_21
+    nodejs_18
     #extraNodePackages.dexsearch
     jira-cli-go
     zellij
     obsidian
     pngpaste
+    cargo
   ];
 #
 #  programs.neovim = {
