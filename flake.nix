@@ -35,6 +35,9 @@
         # Necessary for using flakes on this system.
         nix.settings.experimental-features = "nix-command flakes";
 
+        # add myself as a trusted user
+        nix.settings.trusted-users = ["APreston"];
+
         programs.zsh.enable = true;
       };
 
