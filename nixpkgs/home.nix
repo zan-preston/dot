@@ -57,7 +57,7 @@ in
     kustomize
     newman
     (google-cloud-sdk.withExtraComponents [google-cloud-sdk.components.gke-gcloud-auth-plugin])
-    bitwarden-cli
+    # bitwarden-cli
     keychain
     gcc11
     bat
