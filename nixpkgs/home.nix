@@ -94,6 +94,7 @@ in
     obsidian
     pngpaste
     cargo
+    act
   ];
 #
 #  programs.neovim = {
