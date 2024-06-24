@@ -58,7 +58,7 @@
           nix.settings.experimental-features = "nix-command flakes";
 
           # add myself as a trusted user
-          nix.settings.trusted-users = ["APreston"];
+          nix.settings.trusted-users = ["zan"];
 
           programs.zsh.enable = true;
         };
