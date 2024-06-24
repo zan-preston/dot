@@ -1,5 +1,5 @@
 user := env_var('USER')
-host := "$(hostname)"
+host := "$(hostname -s)"
 defaultUserAtHost := user + '@' + host
 
 switch userAtHost=defaultUserAtHost:

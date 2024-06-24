@@ -78,7 +78,7 @@
           workMachine = true;
           stateVersion = "22.11";
         };
-        "zan@despair.local"= {
+        "zan@despair"= {
           system = "x86_64-darwin";
           username = "zan";
           homeDirectory = "/Users/zan";
