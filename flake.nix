@@ -7,6 +7,10 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nix-darwin = {
+      url = "github:LnL7/nix-darwin/master";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
   };
 
@@ -15,6 +19,7 @@
     flake-utils,
     home-manager,
     nixpkgs,
+    nix-darwin,
     ...
   }: 
   (flake-utils.lib.eachDefaultSystem (system: let
@@ -30,6 +35,34 @@
       # extraNodePkgs = import ./nixpkgs/node { inherit pkgs system}
     }))
       // (let 
+      rawDarwinConfigurations = {
+        "DQJ36L2FJ1" = { pkgs, ... }: {
+          # Auto upgrade nix package and the daemon service.
+          services.nix-daemon.enable = true;
+          # nix.package = pkgs.nix;
+
+          # Necessary for using flakes on this system.
+          nix.settings.experimental-features = "nix-command flakes";
+
+          # add myself as a trusted user
+          nix.settings.trusted-users = ["APreston"];
+
+          programs.zsh.enable = true;
+      };
+        "despair" = { pkgs, ... }: {
+          # Auto upgrade nix package and the daemon service.
+          services.nix-daemon.enable = true;
+          # nix.package = pkgs.nix;
+
+          # Necessary for using flakes on this system.
+          nix.settings.experimental-features = "nix-command flakes";
+
+          # add myself as a trusted user
+          nix.settings.trusted-users = ["APreston"];
+
+          programs.zsh.enable = true;
+        };
+      };
       rawHomeManagerConfigurations = {
         "zan@lenny" = {
           system = "x86_64-linux";
@@ -79,6 +112,21 @@
         nixpkgs.lib.attrsets.mapAttrs
         (userAndHost: userAndHostConfig: homeManagerConfiguration userAndHostConfig)
         rawHomeManagerConfigurations;
+
+      darwinConfigurations.DQJ36L2FJ1 = nix-darwin.lib.darwinSystem {
+        system = "aarch64-darwin";
+        modules = [
+          rawDarwinConfigurations.DQJ36L2FJ1
+          {}
+        ];
+      };
+      darwinConfigurations.despair = nix-darwin.lib.darwinSystem {
+        system = "x86_64-darwin";
+        modules = [
+          rawDarwinConfigurations.despair
+          {}
+        ];
+      };
     })
     // {
       # Re-export flake-utils, home-manager and nixpkgs as usable outputs
