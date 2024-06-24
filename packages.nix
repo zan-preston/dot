@@ -26,8 +26,10 @@
     git
     glow
     gnupg
+    gnutls
     graphicsmagick
     gum
+    home-manager
     htop
     imagemagick
     jq
