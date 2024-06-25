@@ -39,7 +39,6 @@
     nmap
     obsidian
     pandoc
-    pngpaste
     ripgrep
     tmux
     tree
