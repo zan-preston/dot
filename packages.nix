@@ -40,7 +40,6 @@
     obsidian
     pandoc
     ripgrep
-    tmux
     tree
     watch
     wezterm

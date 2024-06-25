@@ -18,6 +18,7 @@ in {
       #(import ./dotfiles.nix {inherit username profile;})
       #./fonts.nix
       # (import ./nixpkgs/node { inherit pkgs system; })
+      (import ./tmux.nix)
       (import ./packages.nix { inherit workMachine; } )
       # (import ./programs.nix {
       #   inherit workMachine;
