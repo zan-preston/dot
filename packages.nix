@@ -35,6 +35,7 @@
     jq
     jqp
     keychain
+    lua51Packages.lua
     neovim
     nmap
     obsidian
