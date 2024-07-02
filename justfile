@@ -13,3 +13,6 @@ install-nix:
 
 fmt:
   find . -name "*.nix" | xargs nix develop --command alejandra
+
+darwin-switch host=host:
+  nix run nix-darwin -- build --flake .#{{host}}
