@@ -45,7 +45,7 @@
     tree
     watch
     wezterm
-    youtube-dl
+    yt-dlp
     zellij
     zsh
   ];
