@@ -20,7 +20,6 @@
     ffmpeg
     fm-go
     fzf
-    gcc11
     gh
     gimp
     git
