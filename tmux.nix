@@ -21,6 +21,7 @@
       bind k select-pane -U
       bind l select-pane -R
       bind r source-file ~/.config/tmux/tmux.conf \;  display "Config Reloaded!"
+      bind S set synchronize-panes
       '';
     };
 }
