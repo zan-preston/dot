@@ -37,6 +37,7 @@
       // (let 
       rawDarwinConfigurations = {
         "DQJ36L2FJ1" = { pkgs, ... }: {
+          system.stateVersion = 5;
           # Auto upgrade nix package and the daemon service.
           services.nix-daemon.enable = true;
           nix.package = pkgs.nixVersions.latest;
@@ -50,6 +51,7 @@
           programs.zsh.enable = true;
       };
         "despair" = { pkgs, ... }: {
+          system.stateVersion = 5;
           # Auto upgrade nix package and the daemon service.
           services.nix-daemon.enable = true;
           nix.package = pkgs.nix;
