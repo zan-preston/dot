@@ -2,11 +2,12 @@
   workMachine
 }: {pkgs, ...}: let
   dev-tools = with pkgs; [
-    coursier
-    scala-cli
-    sbt
+#    coursier
+#    scala-cli
+#    sbt
     go
-    nodejs_18
+#    nodejs_18
+     nodejs
     cargo
   ];
   core-tools = with pkgs; [
