@@ -64,6 +64,20 @@
 
           programs.zsh.enable = true;
         };
+        "ITS-RS-004" = { pkgs, ... }: {
+          system.stateVersion = 5;
+          # Auto upgrade nix package and the daemon service.
+          services.nix-daemon.enable = true;
+          nix.package = pkgs.nix;
+
+          # Necessary for using flakes on this system.
+          nix.settings.experimental-features = "nix-command flakes";
+
+          # add myself as a trusted user
+          nix.settings.trusted-users = ["amprestn"];
+
+          programs.zsh.enable = true;
+        };
       };
       rawHomeManagerConfigurations = {
         "zan@lenny" = {
@@ -80,12 +94,19 @@
           workMachine = true;
           stateVersion = "22.11";
         };
-        "zan@despair"= {
+        "zan@despair" = {
           system = "x86_64-darwin";
           username = "zan";
           homeDirectory = "/Users/zan";
           workMachine = false;
           stateVersion = "22.11";
+        };
+        "amprestn@ITS-RS-004" = {
+          system = "x86_64-darwin";
+          username = "amprestn";
+          homeDirectory = "/Users/amprestn";
+          workMachine = false;
+          stateVersion = "24.11";
         };
       };
 
@@ -126,6 +147,13 @@
         system = "x86_64-darwin";
         modules = [
           rawDarwinConfigurations.despair
+          {}
+        ];
+      };
+      darwinConfigurations.ITS-RS-004 = nix-darwin.lib.darwinSystem {
+        system = "aarch64-darwin";
+        modules = [
+          rawDarwinConfigurations.ITS-RS-004
           {}
         ];
       };

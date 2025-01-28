@@ -15,7 +15,7 @@ fmt:
   find . -name "*.nix" | xargs nix develop --command alejandra
 
 darwin-build host=host:
-  nix run nix-darwin -- build --flake .#{{host}}
+  nix run --extra-experimental-features nix-command --extra-experimental-features flakes nix-darwin -- build --flake .#{{host}}
 
 darwin-switch host=host:
-  nix run nix-darwin -- switch --flake .#{{host}}
+  nix run --extra-experimental-features nix-command --extra-experimental-features flakes nix-darwin -- switch --flake .#{{host}}

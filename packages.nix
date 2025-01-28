@@ -22,6 +22,7 @@
     fm-go
     fzf
     gh
+    ghostty
     gimp
     git
     glow
@@ -42,6 +43,7 @@
     obsidian
     pandoc
     ripgrep
+    starship
     tree
     watch
     wezterm
