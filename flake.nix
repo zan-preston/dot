@@ -36,20 +36,6 @@
     }))
       // (let 
       rawDarwinConfigurations = {
-        "DQJ36L2FJ1" = { pkgs, ... }: {
-          system.stateVersion = 5;
-          # Auto upgrade nix package and the daemon service.
-          services.nix-daemon.enable = true;
-          nix.package = pkgs.nixVersions.latest;
-
-          # Necessary for using flakes on this system.
-          nix.settings.experimental-features = "nix-command flakes";
-
-          # add myself as a trusted user
-          nix.settings.trusted-users = ["APreston"];
-
-          programs.zsh.enable = true;
-      };
         "despair" = { pkgs, ... }: {
           system.stateVersion = 5;
           # Auto upgrade nix package and the daemon service.
@@ -86,13 +72,6 @@
           homeDirectory = "/home/zan";
           workMachine = false;
           stateVersion = "23.05";
-        };
-        "APreston@DQJ36L2FJ1" = {
-          system = "aarch64-darwin";
-          username = "APreston";
-          homeDirectory = "/Users/APreston";
-          workMachine = true;
-          stateVersion = "22.11";
         };
         "zan@despair" = {
           system = "x86_64-darwin";
@@ -136,13 +115,6 @@
         (userAndHost: userAndHostConfig: homeManagerConfiguration userAndHostConfig)
         rawHomeManagerConfigurations;
 
-      darwinConfigurations.DQJ36L2FJ1 = nix-darwin.lib.darwinSystem {
-        system = "aarch64-darwin";
-        modules = [
-          rawDarwinConfigurations.DQJ36L2FJ1
-          {}
-        ];
-      };
       darwinConfigurations.despair = nix-darwin.lib.darwinSystem {
         system = "x86_64-darwin";
         modules = [
