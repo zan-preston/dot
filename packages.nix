@@ -25,6 +25,7 @@
     # ghostty
     gimp
     git
+    glab
     glow
     gnupg
     gnutls
