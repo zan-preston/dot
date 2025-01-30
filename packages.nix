@@ -22,7 +22,7 @@
     fm-go
     fzf
     gh
-    ghostty
+    # ghostty
     gimp
     git
     glow
