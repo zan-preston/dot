@@ -42,6 +42,7 @@
     neovim
     nmap
     obsidian
+    ollama
     pandoc
     ripgrep
     starship
