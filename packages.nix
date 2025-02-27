@@ -45,6 +45,7 @@
     ollama
     pandoc
     ripgrep
+    sshuttle
     starship
     tree
     watch
