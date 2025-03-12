@@ -34,6 +34,7 @@
     home-manager
     htop
     imagemagick
+    jira-cli-go
     jq
     jqp
     keychain
