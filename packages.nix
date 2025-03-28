@@ -45,6 +45,9 @@
     obsidian
     ollama
     pandoc
+    podman
+    podman-tui
+    podman-compose
     ripgrep
     sshuttle
     starship
