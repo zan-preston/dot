@@ -16,6 +16,7 @@
     colordiff
     coreutils
     curl
+    docker
     du-dust
     fd
     ffmpeg
