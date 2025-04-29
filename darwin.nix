@@ -1,3 +1,3 @@
 {pkgs, ...}: {
-  home.packages = with pkgs; [aerospace ice-bar appcleaner pngpaste stats];
+  home.packages = with pkgs; [aerospace ice-bar appcleaner maccy pngpaste stats];
 }
