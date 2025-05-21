@@ -81,7 +81,7 @@
           stateVersion = "22.11";
         };
         "amprestn@ITS-RS-004" = {
-          system = "x86_64-darwin";
+          system = "aarch64-darwin";
           username = "amprestn";
           homeDirectory = "/Users/amprestn";
           workMachine = false;
