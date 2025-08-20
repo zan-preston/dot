@@ -13,6 +13,7 @@
   core-tools = with pkgs; [
     act
     bat
+    claude-code
     colordiff
     coreutils
     curl
@@ -21,6 +22,7 @@
     fd
     ffmpeg
     fm-go
+    fx
     fzf
     gh
     # ghostty
@@ -45,6 +47,7 @@
     nmap
     obsidian
     ollama
+    opencode
     pandoc
     podman-tui
     ripgrep
