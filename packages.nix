@@ -16,6 +16,7 @@
     claude-code
     colordiff
     coreutils
+    cmake
     curl
     docker
     du-dust
@@ -29,6 +30,8 @@
     gimp
     git
     glab
+    glib
+    glibtool
     glow
     gnupg
     gnutls
