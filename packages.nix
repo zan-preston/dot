@@ -53,6 +53,7 @@
     opencode
     pandoc
     podman-tui
+    qutebrowser
     ripgrep
     sshuttle
     starship
