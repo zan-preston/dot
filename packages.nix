@@ -58,6 +58,7 @@
     sshuttle
     starship
     tree
+    uv
     watch
     wezterm
     yt-dlp
