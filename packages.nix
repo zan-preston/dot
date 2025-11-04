@@ -19,7 +19,7 @@
     cmake
     curl
     docker
-    du-dust
+    dust
     fd
     ffmpeg
     fm-go
@@ -27,7 +27,6 @@
     fzf
     gh
     # ghostty
-    gimp
     git
     glab
     glib
