@@ -21,7 +21,7 @@
     nixpkgs,
     nix-darwin,
     ...
-  }: 
+  }:
   (flake-utils.lib.eachDefaultSystem (system: let
       pkgs = nixpkgs.legacyPackages.${system};
     in {
@@ -99,6 +99,41 @@
         home-manager.lib.homeManagerConfiguration {
           pkgs = import nixpkgs {
             inherit system;
+            overlays = [
+              (final: prev: {
+                mole = final.buildGoModule {
+                  pname = "mole";
+                  version = "latest";
+                  src = final.fetchFromGitHub {
+                    owner = "tw93";
+                    repo = "Mole";
+                    rev = "main";
+                    hash = "sha256-V55LOHRwbikYpir3oD+uVkw05bWmMfA3mY3DcNDslwY=";
+                  };
+                  proxyVendor = true;
+                  vendorHash = "sha256-8jpELwcEVdo2gV9KbJz5KttluSRN+hYQeo+ZZ4gFkTk=";
+                  subPackages = ["cmd/analyze" "cmd/status"];
+                  postInstall = ''
+                    mkdir -p $out/bin $out/lib
+                    cp $src/mole $out/bin/mole
+                    chmod +x $out/bin/mole
+                    cp $src/bin/clean.sh $out/bin/clean.sh
+                    cp $src/bin/optimize.sh $out/bin/optimize.sh
+                    cp $src/bin/purge.sh $out/bin/purge.sh
+                    chmod +x $out/bin/clean.sh
+                    chmod +x $out/bin/optimize.sh
+                    chmod +x $out/bin/purge.sh
+                    cp -r $src/lib/* $out/lib/
+                    sed -i "s|SCRIPT_DIR=.*|SCRIPT_DIR=\"$out\"|" $out/bin/mole
+                    ln -sf $out/bin/analyze $out/bin/analyze.sh
+                    ln -sf $out/bin/status $out/bin/status.sh
+                    ln -sf $out/bin/analyze $out/lib/analyze.sh
+                    ln -sf $out/bin/status $out/lib/status.sh
+                  '';
+                  meta.platforms = nixpkgs.lib.platforms.darwin;
+                };
+              })
+            ];
           };
           modules = [
             {nixpkgs.config.allowUnfree = true;}

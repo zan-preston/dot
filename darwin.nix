@@ -1,3 +1,3 @@
 {pkgs, ...}: {
-  home.packages = with pkgs; [aerospace ice-bar appcleaner emacs-macport flashspace jankyborders lima lima-additional-guestagents maccy pngpaste postman profanity stats];
+  home.packages = with pkgs; [aerospace ice-bar appcleaner emacs-macport flashspace jankyborders lima lima-additional-guestagents maccy mole pngpaste postman stats];
 }
