@@ -55,6 +55,7 @@
     podman-tui
     qutebrowser
     ripgrep
+    sniffnet
     sshuttle
     starship
     tree
