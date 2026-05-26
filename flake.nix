@@ -12,6 +12,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    omniwm = {
+      url = "https://github.com/BarutSRB/OmniWM/releases/download/v0.4.9.5/OmniWM-v0.4.9.5.zip";
+      flake = false;
+    };
   };
 
   outputs = {
@@ -20,6 +24,7 @@
     home-manager,
     nixpkgs,
     nix-darwin,
+    omniwm,
     ...
   }:
   (flake-utils.lib.eachDefaultSystem (system: let
@@ -86,6 +91,10 @@
           homeDirectory = "/Users/amprestn";
           workMachine = false;
           stateVersion = "24.11";
+          extraModules = [
+            { _module.args.omniwmSrc = omniwm; }
+            ./omniwm.nix
+          ];
         };
       };
 
@@ -95,6 +104,7 @@
         homeDirectory,
         workMachine,
         stateVersion,
+        extraModules ? [],
       }:
         home-manager.lib.homeManagerConfiguration {
           pkgs = import nixpkgs {
@@ -140,7 +150,7 @@
             (import ./home.nix {
               inherit system username homeDirectory stateVersion workMachine home-manager;
             })
-          ];
+          ] ++ extraModules;
         };
     in {
       # Export home-manager configurations
