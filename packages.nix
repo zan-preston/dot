@@ -13,6 +13,7 @@
   core-tools = with pkgs; [
     act
     bat
+    bitwarden-cli
     claude-code
     colordiff
     coreutils
@@ -46,6 +47,7 @@
     llmfit
     lua51Packages.lua
     lua51Packages.luarocks
+    luaPackages.tree-sitter-cli
     neovim
     nmap
     obsidian
@@ -53,7 +55,7 @@
     opencode
     pandoc
     podman-tui
-    qutebrowser
+    #qutebrowser
     ripgrep
     sniffnet
     sshuttle
