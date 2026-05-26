@@ -8,6 +8,9 @@ switch userAtHost=defaultUserAtHost:
 build userAtHost=defaultUserAtHost:
   nix run . -- build --flake .#{{userAtHost}}
 
+news userAtHost=defaultUserAtHost:
+  nix run . -- news --flake .#{{userAtHost}}
+
 install-nix:
   curl -L https://nixos.org/nix/install | sh
 
