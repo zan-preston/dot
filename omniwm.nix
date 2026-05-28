@@ -1,4 +1,4 @@
-{ pkgs, omniwmSrc, ... }:
+{ pkgs, lib, omniwmSrc, ... }:
 let
   omniwmApp = pkgs.stdenv.mkDerivation {
     pname = "OmniWM";
@@ -13,5 +13,9 @@ let
   };
 in
 {
-  home.file."Applications/OmniWM.app".source = "${omniwmApp}/Applications/OmniWM.app";
+  home.activation.installOmniWM = lib.hm.dag.entryAfter ["writeBoundary"] ''
+    rm -rf "$HOME/Applications/OmniWM.app"
+    cp -r "${omniwmApp}/Applications/OmniWM.app" "$HOME/Applications/OmniWM.app"
+    xattr -r -d com.apple.quarantine "$HOME/Applications/OmniWM.app" 2>/dev/null || true
+  '';
 }
