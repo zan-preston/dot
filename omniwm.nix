@@ -2,7 +2,7 @@
 let
   omniwmApp = pkgs.stdenv.mkDerivation {
     pname = "OmniWM";
-    version = "0.4.9.6";
+    version = "latest";
     src = omniwmSrc;
     dontUnpack = true;
     installPhase = ''
@@ -14,8 +14,10 @@ let
 in
 {
   home.activation.installOmniWM = lib.hm.dag.entryAfter ["writeBoundary"] ''
-    rm -rf "$HOME/Applications/OmniWM.app"
-    cp -r "${omniwmApp}/Applications/OmniWM.app" "$HOME/Applications/OmniWM.app"
-    xattr -r -d com.apple.quarantine "$HOME/Applications/OmniWM.app" 2>/dev/null || true
+    mkdir -p "$HOME/Applications/Home Manager Apps"
+    rm -rf "$HOME/Applications/Home Manager Apps/OmniWM.app"
+    cp -r "${omniwmApp}/Applications/OmniWM.app" "$HOME/Applications/Home Manager Apps/OmniWM.app"
+    chmod -R u+w "$HOME/Applications/Home Manager Apps/OmniWM.app"
+    xattr -r -d com.apple.quarantine "$HOME/Applications/Home Manager Apps/OmniWM.app" 2>/dev/null || true
   '';
 }
