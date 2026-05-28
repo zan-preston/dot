@@ -2,7 +2,7 @@
 let
   omniwmApp = pkgs.stdenv.mkDerivation {
     pname = "OmniWM";
-    version = "0.4.9.5";
+    version = "0.4.9.6";
     src = omniwmSrc;
     dontUnpack = true;
     installPhase = ''
