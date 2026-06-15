@@ -12,10 +12,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    omniwm = {
-      url = "https://github.com/BarutSRB/OmniWM/releases/download/v0.4.9.5/OmniWM-v0.4.9.5.zip";
-      flake = false;
-    };
   };
 
   outputs = {
@@ -24,7 +20,6 @@
     home-manager,
     nixpkgs,
     nix-darwin,
-    omniwm,
     ...
   }:
   (flake-utils.lib.eachDefaultSystem (system: let
@@ -92,8 +87,6 @@
           workMachine = false;
           stateVersion = "24.11";
           extraModules = [
-            { _module.args.omniwmSrc = omniwm; }
-            ./omniwm.nix
           ];
         };
       };
